@@ -5,6 +5,7 @@ FROM ${BUILD_FROM}
 # hadolint ignore=DL3003
 RUN \
     apk update \
+    && apk upgrade \
     && apk add --no-cache --virtual .build-deps \
         autoconf \
         automake \
