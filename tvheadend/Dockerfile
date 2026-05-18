@@ -43,7 +43,7 @@ RUN \
     && ./configure \
         --prefix=/usr \
         --enable-avahi \
-        --enable-bundle \
+        --disable-ffmpeg \
     && make -j"$(nproc)" \
     && make install \
     && cd / && rm -rf /tmp/tvheadend-src \
