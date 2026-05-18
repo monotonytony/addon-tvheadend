@@ -14,19 +14,16 @@ RUN \
         git \
         gettext-dev \
         libtool \
-        liburiparser-dev \
         libxml2-dev \
         libxslt-dev \
         linux-headers \
         make \
-        musl-dev \
         openssl-dev \
         pkgconfig \
         python3-dev \
         zlib-dev \
     && apk add --no-cache \
         avahi \
-        liburiparser \
         openssl \
         py3-pip \
         libxslt \
