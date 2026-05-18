@@ -15,6 +15,7 @@ RUN \
         automake \
         avahi-dev \
         cmake \
+        patch \
         gcc \
         g++ \
         git \
@@ -43,6 +44,12 @@ RUN \
     && ./configure \
         --prefix=/usr \
         --enable-avahi \
+        --disable-libx264 \
+        --disable-libx265 \
+        --disable-libvpx \
+        --disable-libtheora \
+        --disable-libvorbis \
+        --disable-libfdkaac \
         --disable-ffmpeg \
     && make -j"$(nproc)" \
     && make install \
