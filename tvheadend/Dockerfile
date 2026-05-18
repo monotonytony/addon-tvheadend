@@ -13,6 +13,7 @@ RUN \
     && apk add --no-cache --virtual .build-deps \
         autoconf \
         automake \
+        avahi-dev \
         cmake \
         gcc \
         g++ \
