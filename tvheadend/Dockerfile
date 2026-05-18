@@ -2,21 +2,54 @@ ARG BUILD_FROM
 # hadolint ignore=DL3006
 FROM ${BUILD_FROM}
 
-COPY requirements.txt /tmp/
-
+# hadolint ignore=DL3003
 RUN \
     apk update \
     && apk add --no-cache --virtual .build-deps \
-        musl-dev=1.2.3-r4 \
+        autoconf=2.71-r2 \
+        automake=1.16.5-r2 \
+        cmake=3.24.4-r1 \
         gcc=12.2.1_git20220924-r4 \
         g++=12.2.1_git20220924-r4 \
+        git=2.38.5-r1 \
+        gettext-dev=0.21.1-r1 \
+        libtool=2.4.7-r1 \
+        liburiparser-dev=0.9.7-r1 \
         libxml2-dev=2.10.3-r1 \
         libxslt-dev=1.1.37-r0 \
+        linux-headers=5.19.6-r0 \
+        make=4.3-r0 \
+        musl-dev=1.2.3-r4 \
+        openssl-dev=3.0.8-r4 \
+        pkgconfig=1.8.1-r0 \
         python3-dev=3.10.10-r0 \
+        zlib-dev=1.2.13-r0 \
     && apk add --no-cache \
-        tvheadend=4.2.8-r6 \
+        avahi=0.8-r4 \
+        liburiparser=0.9.7-r1 \
+        openssl=3.0.8-r4 \
         py3-pip=22.3.1-r1 \
         libxslt=1.1.37-r0 \
+        zlib=1.2.13-r0 \
+    \
+    && echo "Building tvheadend v4.3 from source..." \
+    && git clone --depth 1 --branch v4.3 \
+        https://github.com/tvheadend/tvheadend.git /tmp/tvheadend-src \
+    && cd /tmp/tvheadend-src \
+    && ./configure \
+        --prefix=/usr \
+        --enable-avahi \
+        --enable-bundle \
+        --enable-libx264 \
+        --enable-libx265 \
+        --enable-libvpx \
+        --enable-libtheora \
+        --enable-libvorbis \
+        --disable-ffmpeg_static \
+    && make -j"$(nproc)" \
+    && make install \
+    && cd / && rm -rf /tmp/tvheadend-src \
+    \
     && pip3 install \
         --no-cache-dir \
         --prefer-binary \
