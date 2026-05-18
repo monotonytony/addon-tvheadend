@@ -6,6 +6,10 @@ FROM ${BUILD_FROM}
 RUN \
     apk update \
     && apk upgrade \
+    && apk add --no-cache --upgrade \
+        libcrypto3=3.0.19-r0 \
+        libssl3=3.0.19-r0 \
+        musl=1.2.3-r6 \
     && apk add --no-cache --virtual .build-deps \
         autoconf \
         automake \
