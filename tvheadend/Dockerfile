@@ -55,7 +55,7 @@ RUN \
         --disable-libvorbis \
         --disable-libfdkaac \
         --disable-ffmpeg_static \
-    && make -j"$(nproc)" \
+    && make -j"$(nproc)" CFLAGS_NO_WERROR=yes \
     && make install \
     && cd / && rm -rf /tmp/tvheadend-src \
     \
