@@ -65,8 +65,6 @@ RUN \
         setuptools==67.4.0 streamlink==5.3.1 \
     && apk del --no-cache --purge .build-deps
 
-RUN mkdir -p /config/tvheadend/wg++ && touch /config/tvheadend/wg++/.placeholder
-
 # Copy root filesystem
 COPY rootfs /
 
