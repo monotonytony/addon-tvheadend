@@ -55,7 +55,8 @@ RUN \
         --disable-libvorbis \
         --disable-libfdkaac \
         --disable-ffmpeg_static \
-    && sed -i 's/^CFLAGS  += -Werror/CFLAGS  += -Werror -fcommon/' Makefile \
+    && sed -i '/^CFLAGS  += -Werror$/s/-Werror//' Makefile \
+    && sed -i '/^CFLAGS  += -g$/s/$/ -fcommon/' Makefile \
     && make -j"$(nproc)" CFLAGS_NO_WERROR=yes \
     && make install \
     && cd / && rm -rf /tmp/tvheadend-src \
