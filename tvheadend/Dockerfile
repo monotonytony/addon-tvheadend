@@ -25,6 +25,8 @@ RUN \
         libxslt-dev \
         linux-headers \
         make \
+        nodejs \
+        npm \
         openssl-dev \
         pkgconfig \
         python3-dev \
@@ -44,6 +46,7 @@ RUN \
     && ./configure \
         --prefix=/usr \
         --enable-avahi \
+        --disable-hdhomerun_static \
         --disable-libx264 \
         --disable-libx265 \
         --disable-libvpx \
