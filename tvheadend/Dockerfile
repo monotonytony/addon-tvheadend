@@ -61,6 +61,8 @@ RUN \
     && make install \
     && cd / && rm -rf /tmp/tvheadend-src \
     \
+    && pip3 install --no-cache-dir --prefer-binary \
+        setuptools==67.4.0 streamlink==5.3.1 \
     && apk del --no-cache --purge .build-deps
 
 # Copy root filesystem
