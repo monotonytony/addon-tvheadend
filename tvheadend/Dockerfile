@@ -54,7 +54,7 @@ RUN \
         --disable-libtheora \
         --disable-libvorbis \
         --disable-libfdkaac \
-        --disable-ffmpeg \
+        --disable-ffmpeg_static \
     && make -j"$(nproc)" \
     && make install \
     && cd / && rm -rf /tmp/tvheadend-src \
