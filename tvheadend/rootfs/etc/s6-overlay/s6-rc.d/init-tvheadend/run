@@ -30,14 +30,14 @@ webgrabplus_install(){
             && sed -i 's|~/.wg++/guide.xml|/config/tvheadend/wg++/guide.xml|g' /usr/bin/tv_grab_wg++ \
             && chmod a+x /usr/bin/tv_grab_wg++
         else
-            bashio::log.info '[Webgrab+] APK: Critical error. Unable install required packages.'
-            exit 1
+            bashio::log.warning '[Webgrab+] Skipping WebGrab+ installation (mono not available on this platform).'
+            return 0
         fi
         bashio::log.info '[Webgrab+] APK: Removing packages no longer required.'
         apk del --no-cache --purge .build-deps
     else
-        bashio::log.error '[Webgrab+] APK: Critical error. Unable to update pkg list. Check connectivity.'
-        exit 1
+        bashio::log.warning '[Webgrab+] Skipping WebGrab+ installation (cannot update packages).'
+        return 0
     fi
     bashio::log.info '[Webgrab+] Finsihed all APK and PIP3 updates and installs.'
 }
