@@ -26,6 +26,7 @@ RUN \
         linux-headers \
         make \
         nodejs \
+        coreutils \
         npm \
         openssl-dev \
         pkgconfig \
