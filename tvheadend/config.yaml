@@ -14,8 +14,10 @@ arch:
   - i386
 webui: "http://[HOST]:[PORT:9981]/"
 devices:
-  - /dev/dvb
-  - /dev/dri
+  - /dev/dvb/adapter0/demux0:/dev/dvb/adapter0/demux0
+  - /dev/dvb/adapter0/dvr0:/dev/dvb/adapter0/dvr0
+  - /dev/dvb/adapter0/frontend0:/dev/dvb/adapter0/frontend0
+  - /dev/dvb/adapter0/net0:/dev/dvb/adapter0/net0
 ports:
   9981/tcp: 9981
   9982/tcp: 9982
