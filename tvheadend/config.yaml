@@ -13,6 +13,8 @@ arch:
   - armv7
   - i386
 webui: "http://[HOST]:[PORT:9981]/"
+privileged: true
+full_access: true
 devices:
   - /dev/dvb
   - /dev/dri
