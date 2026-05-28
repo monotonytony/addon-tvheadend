@@ -14,7 +14,7 @@ arch:
   - i386
 webui: "http://[HOST]:[PORT:9981]/"
 privileged: false
-full_access: true
+full_access: false
 devices:
   - /dev/dvb/adapter0/demux0:/dev/dvb/adapter0/demux0
   - /dev/dvb/adapter0/dvr0:/dev/dvb/adapter0/dvr0
